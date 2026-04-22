@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
+import { Suspense } from 'react';
 import { User, Server, Shield, Code } from 'lucide-react';
 import { personal } from '../../data/portfolio';
 import SectionTitle from '../ui/SectionTitle';
 import SectionReveal from '../layout/SectionReveal';
+import FloatingSphere from '../three/FloatingSphere';
 
 const HIGHLIGHTS = [
   { icon: <Server size={18} color="var(--accent-cyan)" />, label: 'Infraestructura de Redes', desc: 'OSPF, BGP, MPLS L3VPN, Ansible' },
@@ -98,14 +100,19 @@ export default function About() {
                   borderRadius: '0 0 16px 0',
                 }} />
 
-                <div className="d-flex align-items-center gap-3 mb-4">
+                <Suspense fallback={<div style={{ height: 180 }} />}>
+                  <FloatingSphere height="180px" />
+                </Suspense>
+
+                <div className="d-flex align-items-center gap-3 mb-4 mt-2">
                   <div style={{
-                    width: 52, height: 52,
+                    width: 48, height: 48,
                     background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-violet))',
                     borderRadius: '50%',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    flexShrink: 0
                   }}>
-                    <User size={24} color="#fff" />
+                    <User size={22} color="#fff" />
                   </div>
                   <div>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)' }}>

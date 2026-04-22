@@ -2,7 +2,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { personal } from '../../data/portfolio';
-import NetworkGlobe from '../three/NetworkGlobe';
+import SpaceInvader from '../three/SpaceInvader';
 
 // Efecto typewriter
 function TypeWriter({ text, speed = 50 }) {
@@ -146,18 +146,26 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── 3D GLOBE ── */}
+          {/* ── 3D INTERACTIVE GAME ── */}
           <div className="col-12 col-lg-6 order-1 order-lg-2 d-flex justify-content-center"
-            style={{ height: 'clamp(300px, 50vw, 520px)', paddingTop: '80px' }}
+            style={{ height: 'clamp(350px, 50vw, 550px)', paddingTop: '80px' }}
           >
             <motion.div
-              style={{ width: '100%', height: '100%' }}
+              style={{ 
+                width: '100%', 
+                height: '100%',
+                border: '1px solid var(--border-glow)',
+                borderRadius: '20px',
+                background: 'var(--bg-card)',
+                position: 'relative',
+                overflow: 'hidden'
+              }}
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.4, ease: 'easeOut' }}
             >
               <Suspense fallback={<div />}>
-                <NetworkGlobe />
+                <SpaceInvader />
               </Suspense>
             </motion.div>
           </div>
